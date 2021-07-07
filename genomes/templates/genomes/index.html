@@ -1,0 +1,49 @@
+<head>
+    <title>Genomes</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+
+    </script>
+</head>
+
+<body>
+    <div>Genome lookup</div>
+    <form action="">
+        {% csrf_token %}
+        <input type="text"
+               name="filter"
+               id="filter"
+               placeholder="rs123/chr pos">
+    </form>
+
+    <div id="result">
+    </div>
+
+    <script>
+        <!-- on load of page remove filtered items & empty search bar -->
+        $('#result table').remove();
+        $('#filter').val(null);
+
+        let timer = 0;
+        $('#filter').on("input", () => {
+            $('#result table').remove();
+
+            clearTimeout(timer)
+            timer = setTimeout(() => {
+                $.ajax({
+                    url: "{% url 'genomes:filter' %}",
+                    type: "GET", 
+                    data: {
+                        search: $('#filter').val()
+                    },
+                    success: function(data) {
+                        $("#result").append(data.html);
+                    },
+                    error: function(error) {
+                        alert("Something went wrong, please refresh and try again.");
+                    }
+                });
+            }, 1100);
+        });
+    </script>
+</body>
