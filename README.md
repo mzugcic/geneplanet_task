@@ -30,7 +30,7 @@ After you have everything of the above set up and working follow the next steps:
     ```
    This will also install Django.
 
-4. Set up your environment variables as is shown in the _.env.example_ file & apply them by
+4. Set up your environment variables as is shown in the _[.env.example](https://github.com/mzugcic/geneplanet_task/blob/main/.env.example)_ file & apply them by
  calling the next command from the project root folder:
     ```
    source .env
