@@ -1,0 +1,11 @@
+# Environments
+.env
+
+# IDE and text editor settings
+.idea/
+
+# Backend Project files
+django_project/.mypy_cache/
+django_project/media/*
+django_project/static/*
+*.pyc
